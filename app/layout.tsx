@@ -1,10 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import "./globals.css";
+import './globals.css';
+
+import { AuthContext, ToasterContext } from './_context';
 
 export const metadata: Metadata = {
-  title: "Pe4kin",
-  description: "Beautiful Online Messanger App",
+  title: 'Pe4kin',
+  description: 'Beautiful Online Messanger App',
 };
 
 export default function RootLayout({
@@ -14,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`antialiased`}>
+        <AuthContext>
+          <ToasterContext />
+          {children}
+        </AuthContext>
+      </body>
     </html>
   );
 }
